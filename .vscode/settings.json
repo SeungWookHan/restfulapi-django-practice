@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/Han/programming/venv/restfulapi/bin/python3",
+    "python.pythonPath": "/Users/Han/programming/venv/restfulapi/bin/python",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }
