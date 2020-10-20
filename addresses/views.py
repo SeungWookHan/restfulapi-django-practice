@@ -45,3 +45,20 @@ def address(request, pk):
     elif request.method == 'DELETE':
         obj.delete()
         return HttpResponse(status=204)
+
+
+@csrf_exempt
+def login(request):
+
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        search_name = data['name']
+        print(search_name)
+        obj = Addresses.objects.get(name=search_name)
+        print(obj.phone_number)
+
+        if data['phone_number'] == obj.phone_number:
+            return HttpResponse(status=200)
+        # serializer = AddressSerializer(obj)
+        else:
+            return HttpResponse(status=400)

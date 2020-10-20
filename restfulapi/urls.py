@@ -24,5 +24,6 @@ urlpatterns = [
     # url(r'^addresses/', views.address_list),
     path('addresses/', views.address_list),
     path('addresses/<int:pk>/', views.address),
+    path('login/', views.login),
     path('api-auth/', include('rest_framework.urls')),
 ]
