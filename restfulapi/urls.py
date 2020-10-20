@@ -20,6 +20,9 @@ from rest_framework import routers, serializers, viewsets
 from addresses import views
 
 urlpatterns = [
-    url(r'^addresses/', views.address_list),
+    # url(r'^addresses/', views.address_list),
+    # url(r'^addresses/', views.address_list),
+    path('addresses/', views.address_list),
+    path('addresses/<int:pk>/', views.address),
     path('api-auth/', include('rest_framework.urls')),
 ]
