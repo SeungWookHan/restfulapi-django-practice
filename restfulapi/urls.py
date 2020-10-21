@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers, serializers, viewsets
-from addresses import views
+from addresses import views as addressviews
+from images import views as imageviews
 
 urlpatterns = [
     # url(r'^addresses/', views.address_list),
     # url(r'^addresses/', views.address_list),
-    path('addresses/', views.address_list),
-    path('addresses/<int:pk>/', views.address),
-    path('login/', views.login),
+    path('addresses/', addressviews.address_list),
+    path('addresses/<int:pk>/', addressviews.address),
+    path('login/', addressviews.login),
     path('api-auth/', include('rest_framework.urls')),
+    path('images/', imageviews.image_send),
 ]

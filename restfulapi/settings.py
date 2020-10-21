@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'addresses.apps.AddressesConfig',
+    'images.apps.ImagesConfig',
 ]
 
 REST_FRAMEWORK = {
