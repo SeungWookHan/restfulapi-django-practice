@@ -8,6 +8,9 @@ from rest_framework.response import Response
 from . models import Images
 from . serializers import ImageSerializer
 
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
 
 data = '<html><body><h1>리턴입니다.</h1></body></html>'
 
@@ -21,11 +24,20 @@ def image_send(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
-        print(request)
+        img_model = Images()
         try:
-            file = request.FILES['send']
-            file.save("newfile.jpg")
+            # 여기서 file을 튜플 형태로 client가 보낸 그대로 받아옮.
+            file = request.FILES.popitem()
+            # file = file[0]
+            print("여기까지는 됨")
             print(file)
+            print("file의 타입은:", type(file))
+            print(file[1])
+            print("file[1]의 타입은:", type(file[1]))
+            # path = default_storage.save(
+            #     '../upload_test/test.jpg', ContentFile(file[1]))
+            # print(path + "저장 완료")
             return HttpResponse("file received")
         except:
+            print("No Post")
             return HttpResponse("No Post")
