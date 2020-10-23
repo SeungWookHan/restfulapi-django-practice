@@ -15,9 +15,12 @@ from PIL import Image
 
 data = '<html><body><h1>리턴입니다.</h1></body></html>'
 
+num = 1
+
 
 @csrf_exempt
 def image_send(request):
+    global num
     if request.method == 'GET':
         queryset = Images.objects.all()
         serializer = ImageSerializer(queryset, many=True)
@@ -29,19 +32,29 @@ def image_send(request):
         try:
             # 여기서 file을 튜플 형태로 client가 보낸 그대로 받아옮.
             file = request.FILES.popitem()
-            # file = file[0]
-            # print("여기까지는 됨")
-            # print(file)
-            # print("file의 타입은:", type(file))
-            # print(file[1])
-            # print("file[1]의 타입은:", type(file[1]))
-            file = file[1][0].file
-            img = Image.open(file)
-            img.save('newfile.jpg')
+            file = file[1][0]
+            print(file)
+            binary_file = file.file
+            print(binary_file)
+            img = Image.open(binary_file)
+            print(img)
+            img.save(
+                '/Users/Han/programming/restfulapi/upload_test/test{}.jpg'.format(num), 'JPEG')
+
+            # serializer = ImageSerializer(data={'image': img, 'created':'2020-01-01'})
+            # if serializer.is_valid():
+            #     print("db 저장 시작")
+            #     serializer.save()
+            #     print("db 저장 성공")
+
+            # img = Image.open(file)
+            # img.save('newfile.jpg')
+
             # path = default_storage.save(
             #     '../upload_test/test.jpg', ContentFile(file[1]))
             # print(path + "저장 완료")
-            print("성공")
+            print("완전 성공")
+            num += 1
             return HttpResponse("file received")
         except:
             print("No Post")

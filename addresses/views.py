@@ -17,6 +17,7 @@ def address_list(request):
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
+        print(data)
         serializer = AddressSerializer(data=data)
         if serializer.is_valid():
             serializer.save()

@@ -7,4 +7,5 @@ class ImageSerializer(serializers.ModelSerializer):
         model = Images
         fields = [
             'image',
-            'created']
+            'created',
+        ]
