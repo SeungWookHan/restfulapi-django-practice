@@ -37,6 +37,7 @@ def get_secret(setting, secrets=secrets):
 
 
 SECRET_KEY = get_secret("SECRET_KEY")
+#SECRET_KEY = 'p3o4p38d@pzn$58zg_u^+w!3-c0e9ztb$hg9-8itmq*=w+(2ss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
