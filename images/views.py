@@ -13,8 +13,6 @@ from django.core.files.base import ContentFile
 from PIL import Image
 
 
-data = '<html><body><h1>리턴입니다.</h1></body></html>'
-
 num = 1
 
 

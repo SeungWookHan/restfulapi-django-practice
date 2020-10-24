@@ -19,6 +19,8 @@ from django.conf.urls import url, include
 from rest_framework import routers, serializers, viewsets
 from addresses import views as addressviews
 from images import views as imageviews
+from django.views.static import serve
+from . settings import STATIC_ROOT
 
 urlpatterns = [
     # url(r'^addresses/', views.address_list),
@@ -29,4 +31,6 @@ urlpatterns = [
     path('login/', addressviews.login),
     path('api-auth/', include('rest_framework.urls')),
     path('images/', imageviews.image_send),
+    url(r'^static/(?P<path>.*)$', serve,
+        {'document_root': STATIC_ROOT}),
 ]

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE HTML>
 <!--
 	Phase Shift by TEMPLATED
@@ -12,17 +13,17 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.dropotron.min.js"></script>
-	<script src="js/skel.min.js"></script>
-	<script src="js/skel-layers.min.js"></script>
-	<script src="js/init.js"></script>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery.dropotron.min.js' %}"></script>
+	<script src="{% static 'js/skel.min.js' %}"></script>
+	<script src="{% static 'js/skel-layers.min.js' %}"></script>
+	<script src="{% static 'js/init.js' %}"></script>
 	<noscript>
-		<link rel="stylesheet" href="css/skel.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/style-wide.css" />
+		<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-wide.css' %}" />
 	</noscript>
-	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'css/ie/v8.css' %}" /><![endif]-->
 </head>
 
 <body>
@@ -33,12 +34,12 @@
 		<!-- Header -->
 		<div id="header" class="skel-panels-fixed">
 			<div id="logo">
-				<h1><a href="index.html">SSG</a></h1>
+				<h1><a href="">SSG</a></h1>
 				<span class="tag">성남청년프리인턴쉽</span>
 			</div>
 			<nav id="nav">
 				<ul>
-					<li class="active"><a href="index.html">프로젝트개요</a></li>
+					<li class="active"><a href="">프로젝트개요</a></li>
 					<li><a href="left-sidebar.html">전송된 사진</a></li>
 					<li><a href="right-sidebar.html">전송된 사진 내역</a></li>
 					<li><a href="no-sidebar.html">HELP</a></li>
@@ -58,19 +59,22 @@
 		<div id="extra">
 			<div class="container">
 				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/pic01.jpg' %}"
+								alt=""></a>
 						<div class="box">
 							<p>사진과 함께 READ MORE 클릭시 상세정보 및 부연설명</p>
 							<a href="#" class="button">Read More</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/pic02.jpg' %}"
+								alt=""></a>
 						<div class="box">
 							<p>이 부분의 공간을 넓혀서 사진 크기를 키우고 싶은데 아직 모르겠습니다.</p>
 							<a href="#" class="button">Read More</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/pic03.jpg' %}"
+								alt=""></a>
 						<div class="box">
 							<p>마찬가지</p>
 							<a href="#" class="button">Read More</a>
@@ -78,19 +82,22 @@
 					</section>
 				</div>
 				<div class="row no-collapse-1">
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/pic01.jpg' %}"
+								alt=""></a>
 						<div class="box">
 							<p>배경은 좀더 심플하게 바꾸는 것이 좋을 것 같고</p>
 							<a href="#" class="button">Read More</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic02.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/pic02.jpg' %}"
+								alt=""></a>
 						<div class="box">
 							<p>밑에 있는 쓸때 없는 내용은 지워버리고</p>
 							<a href="#" class="button">Read More</a>
 						</div>
 					</section>
-					<section class="4u"> <a href="#" class="image featured"><img src="images/pic03.jpg" alt=""></a>
+					<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/pic03.jpg' %}"
+								alt=""></a>
 						<div class="box">
 							<p>위에 있는 메뉴같은거 left Sidebar, Right sidebar 등등 저희가 <b> 원하는 </b> <u>메뉴로</u> <big>바꾸면</big>
 								<i>될거같습니다</i> </p>
