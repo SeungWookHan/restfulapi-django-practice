@@ -23,6 +23,7 @@ from images import views as imageviews
 urlpatterns = [
     # url(r'^addresses/', views.address_list),
     # url(r'^addresses/', views.address_list),
+    path('', imageviews.init),
     path('addresses/', addressviews.address_list),
     path('addresses/<int:pk>/', addressviews.address),
     path('login/', addressviews.login),

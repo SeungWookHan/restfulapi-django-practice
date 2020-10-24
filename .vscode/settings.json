@@ -1,5 +1,8 @@
 {
     "python.pythonPath": "/Users/Han/programming/venv/restfulapi/bin/python",
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+    ],
 }

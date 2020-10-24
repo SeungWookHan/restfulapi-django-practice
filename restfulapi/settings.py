@@ -146,3 +146,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# 관리할 앱 내의 static 디렉터리
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'images', 'static')
+]
+
+# 루트 static 디렉터리
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

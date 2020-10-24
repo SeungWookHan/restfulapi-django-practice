@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.template import Context, loader
 # Create your views here.
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -16,6 +16,12 @@ from PIL import Image
 data = '<html><body><h1>리턴입니다.</h1></body></html>'
 
 num = 1
+
+
+@csrf_exempt
+def init(request):
+    template = loader.get_template("index.html")
+    return HttpResponse(template.render())
 
 
 @csrf_exempt
