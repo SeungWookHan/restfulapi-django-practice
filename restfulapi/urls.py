@@ -21,6 +21,9 @@ from addresses import views as addressviews
 from images import views as imageviews
 from django.views.static import serve
 from . settings import STATIC_ROOT
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     # url(r'^addresses/', views.address_list),
@@ -33,4 +36,4 @@ urlpatterns = [
     path('images/', imageviews.image_send),
     url(r'^static/(?P<path>.*)$', serve,
         {'document_root': STATIC_ROOT}),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
