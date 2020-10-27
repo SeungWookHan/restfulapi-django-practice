@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import json
 from django.core.exceptions import ImproperlyConfigured
+from os.path import dirname, realpath, join
+
+PROJECT_ROOT = dirname(realpath(__file__))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -144,15 +147,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 STATIC_URL = '/static/'
 # 관리할 앱 내의 static 디렉터리
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'images', 'static'),
+    # os.path.join(BASE_DIR, 'images', 'static'),
+    # 'webui/static',
+    # BASE_DIR / "static",
+    # '/var/www/static/',
+    os.path.join(STATIC_URL, 'images'),
 ]
 
 # 루트 static 디렉터
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
+# STATIC_ROOT = join(PROJECT_ROOT, 'static/')
+# STATIC_ROOT = "/var/www/example.com/static/"
+
+# List of finder classes that know how to find static files in various locations.

@@ -34,6 +34,11 @@ urlpatterns = [
     path('login/', addressviews.login),
     path('api-auth/', include('rest_framework.urls')),
     path('images/', imageviews.image_send),
-    url(r'^static/(?P<path>.*)$', serve,
-        {'document_root': STATIC_ROOT}),
+    # url(r'^static/(?P<path>.*)$', serve,
+    #     {'document_root': STATIC_ROOT}),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+# redirects to static media files (css, javascript, images, etc.)
+# (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+#  {'document_root': 'static/'}),
