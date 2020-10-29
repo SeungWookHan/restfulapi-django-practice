@@ -159,7 +159,7 @@ STATICFILES_DIRS = [
     # 'webui/static',
     # BASE_DIR / "static",
     # '/var/www/static/',
-    os.path.join(STATIC_URL, 'images'),
+    os.path.join(BASE_DIR, 'images', 'static'),
 ]
 
 # 루트 static 디렉터
