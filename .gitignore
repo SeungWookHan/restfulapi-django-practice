@@ -188,5 +188,5 @@ Temporary Items
 
 ### custom ###
 secrets.json
-
+upload_test/
 # End of https://www.toptal.com/developers/gitignore/api/django,vscode,macos

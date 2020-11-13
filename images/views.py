@@ -12,8 +12,7 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from PIL import Image
 
-
-num = 1
+import datetime
 
 
 @csrf_exempt
@@ -24,7 +23,6 @@ def init(request):
 
 @csrf_exempt
 def image_send(request):
-    global num
     if request.method == 'GET':
         queryset = Images.objects.all()
         serializer = ImageSerializer(queryset, many=True)
@@ -42,23 +40,22 @@ def image_send(request):
             print(binary_file)
             img = Image.open(binary_file)
             print(img)
+            num = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            path = '/Users/Han/programming/restfulapi/upload_test/test{}.jpg'.format(
+                num)
             img.save(
-                '/Users/Han/programming/restfulapi/upload_test/test{}.jpg'.format(num), 'JPEG')
+                path, 'JPEG')
 
-            # serializer = ImageSerializer(data={'image': img, 'created':'2020-01-01'})
-            # if serializer.is_valid():
-            #     print("db 저장 시작")
-            #     serializer.save()
-            #     print("db 저장 성공")
+            serializer = ImageSerializer(
+                data={'caption': path, 'created': ''})
+            if serializer.is_valid():
+                print("db 저장 시작")
+                serializer.save()
+                print("db 저장 성공")
+            else:
+                print("db 저장 실패")
 
-            # img = Image.open(file)
-            # img.save('newfile.jpg')
-
-            # path = default_storage.save(
-            #     '../upload_test/test.jpg', ContentFile(file[1]))
-            # print(path + "저장 완료")
             print("완전 성공")
-            num += 1
             return HttpResponse("file received")
         except:
             print("No Post")

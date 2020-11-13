@@ -6,7 +6,7 @@ with open('./sample.jpeg', 'rb') as img:
     ]
     # 101.101.208.153
     try:
-        requests.post("http://101.101.208.153:8000/images/", files=files)
+        requests.post("http://127.0.0.1:8000/images/", files=files)
         print("이미지 전송 성공")
     except:
         print("이미지 전송 실패")

@@ -6,6 +6,6 @@ class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Images
         fields = [
-            'image',
+            'caption',
             'created',
         ]
