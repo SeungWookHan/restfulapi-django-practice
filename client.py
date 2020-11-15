@@ -1,6 +1,6 @@
 import requests
 
-with open('./sample.jpeg', 'rb') as img:
+with open('./sample3.jpeg', 'rb') as img:
     files = [
         ('send', img)
     ]

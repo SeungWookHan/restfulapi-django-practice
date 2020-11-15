@@ -173,4 +173,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = join(PROJECT_ROOT, 'static/')
 # STATIC_ROOT = "/var/www/example.com/static/"
 
+# 미디어 파일을 관리할 루트 media 디렉터리
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# 각 media file에 대한 URL prefix
+MEDIA_URL = '/media/'
 # List of finder classes that know how to find static files in various locations.

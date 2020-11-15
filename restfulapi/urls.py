@@ -34,9 +34,10 @@ urlpatterns = [
     path('login/', addressviews.login),
     path('api-auth/', include('rest_framework.urls')),
     path('images/', imageviews.image_send),
+    path('admin/', admin.site.urls),
     # url(r'^static/(?P<path>.*)$', serve,
     #     {'document_root': STATIC_ROOT}),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # redirects to static media files (css, javascript, images, etc.)

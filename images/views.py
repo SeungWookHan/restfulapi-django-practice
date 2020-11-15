@@ -19,16 +19,29 @@ import os
 @csrf_exempt
 def init(request):
     template = loader.get_template("index.html")
-    return HttpResponse(template.render())
+    queryset = Images.objects.all()
+    queryset = queryset.order_by('-created')[:8]
+    for query in queryset:
+        query.caption = query.caption[48:]
+    context = {'images': queryset, }
+    return HttpResponse(template.render(context, request))
 
 
 @csrf_exempt
 def image_send(request):
     if request.method == 'GET':
+        template = loader.get_template("sample.html")
         queryset = Images.objects.all()
-        serializer = ImageSerializer(queryset, many=True)
-        # return HttpResponse(data)
-        return JsonResponse(serializer.data, safe=False)
+        # 8개로 제한 연습(index.html이 8개 정도기에)
+        queryset = queryset.order_by('-created')[:8]
+        for query in queryset:
+            query.caption = query.caption[48:]
+            # /Users/Han/programming/restfulapi/images/static/media/{}.jpg 경로에서 media 부터 시작하기 위함으로 슬라이싱
+        context = {'images': queryset, }
+        # serializer = ImageSerializer(queryset, many=True)
+        # return JsonResponse(serializer.data, safe=False)
+        # return render(request, '/Users/Han/programming/restfulapi/images/templates/index.html', {'images': queryset, })
+        return HttpResponse(template.render(context, request))
 
     elif request.method == 'POST':
         img_model = Images()
@@ -46,7 +59,7 @@ def image_send(request):
             #     num)
             # print(path)
             # print(type(path))
-            abspath = os.path.abspath("./upload_test/test{}.jpg".format(
+            abspath = os.path.abspath("./images/static/media/test{}.jpg".format(
                 num))
             print(abspath)
             print(type(abspath))

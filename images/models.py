@@ -4,8 +4,8 @@ from django.db import models
 
 
 class Images(models.Model):
-    caption = models.CharField(max_length=80)
-    # image = models.ImageField(upload_to='../upload_test')
+    caption = models.CharField(max_length=80, default='')
+    # image = models.ImageField(upload_to='')
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
