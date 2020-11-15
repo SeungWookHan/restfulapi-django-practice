@@ -13,6 +13,7 @@ from django.core.files.base import ContentFile
 from PIL import Image
 
 import datetime
+import os
 
 
 @csrf_exempt
@@ -41,13 +42,18 @@ def image_send(request):
             img = Image.open(binary_file)
             print(img)
             num = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            path = '/Users/Han/programming/restfulapi/upload_test/test{}.jpg'.format(
-                num)
+            # path = '/Users/Han/programming/restfulapi/upload_test/test{}.jpg'.format(
+            #     num)
+            # print(path)
+            # print(type(path))
+            abspath = os.path.abspath("./upload_test/test{}.jpg".format(
+                num))
+            print(abspath)
+            print(type(abspath))
             img.save(
-                path, 'JPEG')
-
+                abspath, 'JPEG')
             serializer = ImageSerializer(
-                data={'caption': path, 'created': ''})
+                data={'caption': abspath, 'created': ''})
             if serializer.is_valid():
                 print("db 저장 시작")
                 serializer.save()
